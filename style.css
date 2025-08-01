@@ -1,0 +1,249 @@
+/* --- General Body & Font Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    font-weight: 600;
+}
+
+a {
+    color: #00fddc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.alt-bg {
+    background-color: #222;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.5em;
+    color: #00fddc;
+}
+
+/* --- Header & Navigation --- */
+#home {
+    background: #1f1f1f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.9);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #00fddc;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    font-weight: 400;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #00fddc;
+    color: #1a1a1a;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 253, 220, 0.5);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(0, 253, 220, 0.8);
+    text-decoration: none;
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: 3px solid #00fddc;
+    object-fit: cover;
+}
+
+.about-text h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* --- Goal Section --- */
+.goal-intro {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.progress-bar-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 4px;
+    margin-top: 15px;
+}
+
+.progress {
+    height: 25px;
+    background-color: #00fddc;
+    border-radius: 5px;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: 600;
+    line-height: 25px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* --- Support Section --- */
+#support {
+    background: #222;
+}
+
+.donation-box {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background: #333;
+    border-radius: 8px;
+}
+
+/* --- Promise Section --- */
+.promise-content {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.promise-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.promise-content li {
+    background: #222;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #00fddc;
+}
+
+.promise-content li strong {
+    color: #00fddc;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* --- Footer --- */
+#contact {
+    background: #111;
+    padding: 40px 20px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simple hiding for mobile, can be replaced with a burger menu */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+}
