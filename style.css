@@ -1,0 +1,406 @@
+/* --- GLOBAL & FONT SETUP --- */
+/* --- ADDED: NAVIGATION MENU --- */
+.top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 4px solid #555;
+    border-image: url('images/stone.webp') 30 round;
+    border-image-width: 4px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+.top-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+.top-menu li a:hover {
+    color: #6dd5ed; /* Diamond blue color */
+}
+
+/* ADDED: Active link highlight for the menu */
+.top-menu li a.active {
+    color: #6dd5ed; /* The same diamond blue as the hover effect */
+    text-shadow: 0 0 5px #6dd5ed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding-top: 50px; /* Add this line */
+    color: white;
+    /* This makes the scrolling snap between sections on compatible browsers */
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 3rem;
+    text-shadow: 4px 4px 0px #000000a0;
+}
+h2 {
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 0px #000000a0;
+}
+p {
+    font-family: 'Verdana', sans-serif; /* A more readable font for paragraphs */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-shadow: 2px 2px 2px #000;
+}
+
+/* --- THE WORLD LAYERS --- */
+.layer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    image-rendering: pixelated; /* Crucial for the blocky texture look */
+}
+
+.sky-layer { 
+    background-image: url('images/sky.webp'); 
+    justify-content: flex-start;
+    padding-top: 100px;
+}
+.grass-layer { 
+    background-image: url('images/grass.webp'); 
+    background-size: 128px; 
+    justify-content: flex-start;
+    padding-top: 100px;
+}
+.stone-layer { background-image: url('images/stone.webp'); background-size: 128px; }
+.stone-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+    pointer-events: none;
+    z-index: 0;
+}
+.stone-layer > * { position: relative; z-index: 1; }
+.bedrock-layer { background-image: url('images/bedrock.webp'); background-size: 64px; height: auto; padding: 60px 20px; }
+/* Dim the bedrock background so content remains readable */
+.bedrock-layer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    pointer-events: none;
+}
+/* Ensure content appears above the overlay */
+.bedrock-layer > * { position: relative; z-index: 1; }
+/* Fallback background colors in case textures fail */
+.sky-layer { background-color: #4da6ff; }
+.grass-layer { background-color: #2e7d32; }
+.stone-layer { background-color: #616161; }
+.bedrock-layer { background-color: #212121; }
+
+/* --- CONTENT BOXES --- */
+.content-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    max-width: 900px;
+    margin: 20px;
+}
+.dirt-border { border: 12px solid #966A44; border-image: url('images/dirt.webp') 30 round; border-image-width: 12px; }
+.stone-border { border: 12px solid #888888; border-image: url('images/stone.webp') 30 round; border-image-width: 12px; }
+.header-box { background-color: rgba(0, 0, 0, 0.5); padding: 40px; border-radius: 10px; }
+
+/* --- DONATION DIAMOND BLOCK --- */
+.call-to-action { position: relative; }
+.donation-block-wrapper { cursor: pointer; margin-top: 30px; perspective: 800px; padding: 16px; position: relative; border: 4px solid #6dd5ed; box-shadow: 0 0 12px #6dd5ed80, inset 0 0 6px #6dd5ed60; }
+.donation-block-wrapper:active { box-shadow: 0 0 28px #6dd5edee, inset 0 0 14px #6dd5edcc; }
+.donation-block-wrapper { animation: pulse 2.5s infinite ease-in-out; -webkit-animation: pulse 2.5s infinite ease-in-out; }
+.donation-block {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    animation: rotate 20s infinite linear;
+    -webkit-animation: rotate 20s infinite linear;
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
+    transition: transform 0.4s ease;
+    will-change: transform;
+}
+.donation-block-wrapper:hover .donation-block { transform: scale(1.2); }
+/* Pause rotation when hovering directly over the block */
+.donation-block:hover { animation-play-state: paused; -webkit-animation-play-state: paused; }
+.donation-block__face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url('images/diamond_ore.webp');
+    background-size: cover;
+    background-color: #6dd5ed; /* Fallback so rotation is visible even if image fails */
+    border: 3px solid #6dd5ed;
+    image-rendering: pixelated;
+    box-shadow: inset 0 0 30px #6dd5ed80;
+    backface-visibility: hidden;
+}
+.donation-block__face:nth-child(1) { transform: rotateY(  0deg) translateZ(75px); }
+.donation-block__face:nth-child(2) { transform: rotateY( 90deg) translateZ(75px); }
+.donation-block__face:nth-child(3) { transform: rotateY(180deg) translateZ(75px); }
+.donation-block__face:nth-child(4) { transform: rotateY(-90deg) translateZ(75px); }
+.donation-block__face:nth-child(5) { transform: rotateX( 90deg) translateZ(75px); }
+.donation-block__face:nth-child(6) { transform: rotateX(-90deg) translateZ(75px); }
+.click-text { margin-top: 20px; font-size: 1.5rem; color: #6dd5ed; text-shadow: 2px 2px 0 #000; display: block; padding: 0; border: 0; box-shadow: none; }
+
+/* Focus style for keyboard users on donation button */
+#donation-button:focus { outline: none; }
+
+@keyframes rotate {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+@-webkit-keyframes rotate {
+    from { -webkit-transform: rotateX(0deg) rotateY(0deg); }
+    to { -webkit-transform: rotateX(360deg) rotateY(360deg); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.05); }
+    100% { -webkit-transform: scale(1); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .donation-block, .donation-block-wrapper { animation: none !important; -webkit-animation: none !important; transition: none !important; }
+}
+
+/* --- PROGRESS BAR --- */
+.progress-bar-container { width: 100%; height: 40px; background-color: #333; border: 5px solid #000; margin: 20px auto; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, #6dd5ed, #a2f2ff); box-shadow: inset 0 0 10px #00000080; width: 0%; transition: width 0.5s ease; }
+
+/* --- FOOTER --- */
+footer { color: #aaa; }
+
+/* --- SCROLL DOWN INDICATOR --- */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border: 5px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
+}
+.scroll-down-indicator::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    transform: rotate(45deg);
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-20px); }
+    60% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* --- RESPONSIVE DESIGN FOR PHONES --- */
+@media (max-width: 768px) {
+    body { padding-top: 40px; }
+    .top-menu { height: 40px; }
+    .top-menu li a { padding: 10px 8px; font-size: 0.7rem; }
+    .scroll-button { width: 40px; height: 40px; right: 15px; bottom: 15px; }
+    
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    p { font-size: 1rem; }
+    .content-box { padding: 20px; border-width: 8px; }
+    .bedrock-layer { background-size: 56px; }
+    .bedrock-layer::before { background: rgba(0, 0, 0, 0.78); }
+    /* Prevent cube scale on hover emulation on mobile to avoid overlap */
+    .donation-block-wrapper:hover .donation-block { transform: none; }
+    /* Ensure text sits above the cube and has spacing on small tablets/phones */
+    .donation-block-wrapper { display: flex; flex-direction: column; align-items: center; }
+    .click-text { order: -1; margin: 0 0 16px 0; position: relative; z-index: 3; }
+    /* Reduce cube size for ≤768px to avoid covering text */
+    .donation-block { width: 120px; height: 120px; margin-bottom: 20px; z-index: 1; }
+    .donation-block__face { width: 120px; height: 120px; }
+    /* Adjust transforms to match 120px cube (translateZ = 60px) */
+    .donation-block__face:nth-child(1) { transform: rotateY(  0deg) translateZ(60px); }
+    .donation-block__face:nth-child(2) { transform: rotateY( 90deg) translateZ(60px); }
+    .donation-block__face:nth-child(3) { transform: rotateY(180deg) translateZ(60px); }
+    .donation-block__face:nth-child(4) { transform: rotateY(-90deg) translateZ(60px); }
+    .donation-block__face:nth-child(5) { transform: rotateX( 90deg) translateZ(60px); }
+    .donation-block__face:nth-child(6) { transform: rotateX(-90deg) translateZ(60px); }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    p { font-size: 0.95rem; }
+    .content-box { padding: 16px; }
+    .donation-block-wrapper { padding-bottom: 32px; display: flex; flex-direction: column; align-items: center; }
+    /* Place text above the cube to avoid any overlap */
+    .click-text { order: -1; margin-top: 0; margin-bottom: 16px; position: relative; z-index: 2; }
+    .donation-block { order: 0; }
+    .donation-block { width: 100px; height: 100px; z-index: 1; margin-bottom: 24px; }
+    .donation-block__face { width: 100px; height: 100px; }
+    /* Adjust transforms to match 100px cube (translateZ = 50px) */
+    .donation-block__face:nth-child(1) { transform: rotateY(  0deg) translateZ(50px); }
+    .donation-block__face:nth-child(2) { transform: rotateY( 90deg) translateZ(50px); }
+    .donation-block__face:nth-child(3) { transform: rotateY(180deg) translateZ(50px); }
+    .donation-block__face:nth-child(4) { transform: rotateY(-90deg) translateZ(50px); }
+    .donation-block__face:nth-child(5) { transform: rotateX( 90deg) translateZ(50px); }
+    .donation-block__face:nth-child(6) { transform: rotateX(-90deg) translateZ(50px); }
+    .click-text { position: relative; z-index: 2; margin-top: 56px; }
+}
+
+/* Ultra-small phones */
+@media (max-width: 400px) {
+    .donation-block { width: 90px; height: 90px; margin-bottom: 20px; }
+    .donation-block__face { width: 90px; height: 90px; }
+    /* Adjust transforms to match 90px cube (translateZ = 45px) */
+    .donation-block__face:nth-child(1) { transform: rotateY(  0deg) translateZ(45px); }
+    .donation-block__face:nth-child(2) { transform: rotateY( 90deg) translateZ(45px); }
+    .donation-block__face:nth-child(3) { transform: rotateY(180deg) translateZ(45px); }
+    .donation-block__face:nth-child(4) { transform: rotateY(-90deg) translateZ(45px); }
+    .donation-block__face:nth-child(5) { transform: rotateX( 90deg) translateZ(45px); }
+    .donation-block__face:nth-child(6) { transform: rotateX(-90deg) translateZ(45px); }
+}
+
+/* --- FOOTER & SOCIAL LINKS --- */
+.social-links {
+    margin: 20px 0;
+}
+.social-links a {
+    color: #aaa;
+    font-size: 2.5rem; /* Makes icons bigger */
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.social-links a:hover {
+    color: #6dd5ed; /* Diamond blue on hover */
+}
+
+/* --- ADDED: Formspree Contact Form Styles --- */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 3px solid #888;
+    color: white;
+    font-family: 'Verdana', sans-serif;
+    font-size: 1rem;
+}
+.submit-button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: white;
+    background-color: #5a5a5a;
+    border: 3px solid #888;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.submit-button:hover {
+    background-color: #6dd5ed;
+    color: #000;
+}
+.alt-contact {
+    margin-top: 20px;
+    color: #aaa;
+}
+.alt-contact a {
+    color: #6dd5ed;
+    text-decoration: none;
+}
+
+/* --- UPDATED: Scroll Button Visibility --- */
+.scroll-button {
+    position: fixed;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    z-index: 100;
+    /* Logic for fade in/out */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.scroll-button.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.scroll-button:hover {
+    background-color: #6dd5ed;
+    color: black;
+    transform: scale(1.1);
+}
+
+.go-down {
+    bottom: 30px; /* Positioned at the bottom right */
+}

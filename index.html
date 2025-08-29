@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Description for SEO and Social Sharing -->
+    <meta name="description" content="Help Jitendra Raghav, an aspiring developer from India, fund a new laptop to pursue his coding dreams.">
+
+    <!-- Favicon Link -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>A Dollar for a Developer</title>
+    <link rel="preload" as="style" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://your-domain.example/">
+
+    <!-- ADDED: Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Social Sharing Meta -->
+    <meta property="og:title" content="A Dollar for a Developer">
+    <meta property="og:description" content="Help Jitendra Raghav fund a laptop to pursue coding.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/diamond_ore.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+    <!-- ADDED: Sticky Navigation Menu -->
+    <nav class="top-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#quest">My Quest</a></li>
+            <li><a href="#goal">The Goal</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="world-container">
+
+        <!-- LAYER 1: THE SKY (ID is now 'home' for the menu) -->
+        <section id="home" class="layer sky-layer">
+            <div class="header-box">
+                <h1>A Dollar for a Developer</h1>
+                <p>Help me craft a better future. Scroll down to begin the adventure.</p>
+            </div>
+            <div class="scroll-down-indicator"></div>
+            <!-- ADDED: Go to Bottom Button -->
+            <a href="#contact" class="scroll-button go-down" aria-label="Go to bottom">
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </section>
+
+        <!-- LAYER 2: THE GRASSLAND (ID is now 'quest' for the menu) -->
+        <section id="quest" class="layer grass-layer">
+            <div class="content-box dirt-border">
+                <h2>My Quest</h2>
+                <p>Hello! I'm Jitendra Raghav, a 20-year-old developer-in-training from India. My passion is to build amazing things with code, but my current equipment is like a wooden pickaxe trying to break obsidian. It's slow and holds me back from learning advanced skills.</p>
+            </div>
+        </section>
+
+        <!-- LAYER 3: THE UNDERGROUND (ID is now 'goal' for the menu) -->
+        <section id="goal" class="layer stone-layer">
+            <div class="content-box stone-border">
+                <h2>Mining for a Goal: $342</h2>
+                <p>My mission is to mine enough resources to fund a powerful, second-hand laptop. This new tool will be my ultimate crafting table, allowing me to build complex projects and eventually help others with my skills.</p>
+                
+                <h3>Progress Mined:</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                </div>
+            </div>
+
+            <div class="content-box stone-border call-to-action">
+                <h2>Find the Diamond!</h2>
+                <p>Your contribution is the rare diamond I'm searching for. Click the block below to support the quest.</p>
+                
+                <div class="donation-block-wrapper" id="donation-button">
+                    <div class="donation-block">
+                        <div class="donation-block__face"></div>
+                        <div class="donation-block__face"></div>
+                        <div class="donation-block__face"></div>
+                        <div class="donation-block__face"></div>
+                        <div class="donation-block__face"></div>
+                        <div class="donation-block__face"></div>
+                    </div>
+                    <div class="click-text">Click to Support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 4: BEDROCK (ID is now 'contact' for the menu) -->
+        <section id="contact" class="layer bedrock-layer">
+            <footer>
+                <h2>Get in Touch</h2>
+                
+                <!-- ADDED: Formspree Contact Form -->
+                <form id="contact-form" action="https://formspree.io/f/mpwjzook" method="POST">
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+
+                <p class="alt-contact">Or contact me directly at: <a href="mailto:adollarforadeveloper@gmail.com">adollarforadeveloper@gmail.com</a></p>
+
+                <div class="social-links">
+                    <a href="https://www.reddit.com/user/Hot-Watercress-5693/" target="_blank" aria-label="Reddit Profile">
+                        <i class="fab fa-reddit-alien"></i>
+                    </a>
+                    <a href="https://youtube.com/@adollarforadeveloper" target="_blank" aria-label="YouTube Channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+                <p>Jitendra Raghav - 2025</p>
+            </footer>
+        </section>
+
+    </div> <!-- This is the closing tag for world-container -->
+
+    <!-- ADDED: Scroll Button outside the world container -->
+    <a href="#contact" class="scroll-button go-down" id="go-down-button" aria-label="Go to bottom">
+        <i class="fas fa-arrow-down"></i>
+    </a>
+
+    <!-- UPDATED JAVASCRIPT -->
+    <script>
+        // --- Donation Button Logic ---
+        const donationButton = document.getElementById('donation-button');
+        donationButton.addEventListener('click', () => {
+            window.open('PASTE_YOUR_INSTAMOJO_LINK_HERE', '_blank');
+        });
+
+        // --- Active Menu Link & Smart Scroll Button Logic ---
+        const sections = document.querySelectorAll('.layer');
+        const menuLinks = document.querySelectorAll('.top-menu a');
+        const goDownButton = document.getElementById('go-down-button');
+
+        // --- Home button scroll to top functionality ---
+        const homeLink = document.querySelector('.top-menu a[href="#home"]');
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.body.offsetHeight;
+            
+            // --- Logic to find and highlight the active section ---
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 55; // Offset for the nav menu height
+                const sectionHeight = section.offsetHeight;
+                const sectionBottom = sectionTop + sectionHeight;
+                
+                // Highlight the section that's currently visible in the viewport
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            menuLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // --- Logic for the "Go Down" button visibility ---
+            if (scrollPosition + windowHeight < fullHeight - 100) { // 100px buffer from bottom
+                goDownButton.classList.add('visible');
+            } else {
+                goDownButton.classList.remove('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>
