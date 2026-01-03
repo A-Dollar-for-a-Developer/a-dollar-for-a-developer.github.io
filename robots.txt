@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://a-dollar-for-a-developer.github.io/sitemap.xml
+
+# Disallow crawling of minified files (optional - you can remove this if you want them indexed)
+Disallow: /index.min.html
+Disallow: /style.min.css
+

@@ -1,0 +1,20 @@
+{
+  "name": "A Dollar for a Developer",
+  "short_name": "Dollar Dev",
+  "description": "Help Jitendra, an aspiring developer, fund a second-hand laptop to pursue his coding dreams.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#212121",
+  "theme_color": "#6dd5ed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["fundraising", "education", "social"],
+  "lang": "en"
+}
+

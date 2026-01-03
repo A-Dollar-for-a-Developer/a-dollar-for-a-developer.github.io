@@ -2,33 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90JQWKBCQZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-90JQWKBCQZ');
+    </script>
     
     <!-- Meta Description for SEO and Social Sharing -->
-    <meta name="description" content="Help Jitendra Raghav, an aspiring developer from India, fund a new laptop to pursue his coding dreams.">
+    <meta name="description" content="Help Jitendra, an aspiring developer, fund a second-hand laptop to pursue his coding dreams.">
 
     <!-- Favicon Link -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.ico">
 
     <title>A Dollar for a Developer</title>
     <link rel="preload" as="style" href="style.css">
+    <link rel="preload" as="image" href="images/diamond_ore.webp">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="canonical" href="https://your-domain.example/">
+    <link rel="canonical" href="https://a-dollar-for-a-developer.github.io/">
 
     <!-- ADDED: Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Social Sharing Meta -->
     <meta property="og:title" content="A Dollar for a Developer">
-    <meta property="og:description" content="Help Jitendra Raghav fund a laptop to pursue coding.">
+    <meta property="og:description" content="Help Jitendra, an aspiring developer, fund a second-hand laptop to pursue his coding dreams.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="images/diamond_ore.png">
+    <meta property="og:image" content="https://a-dollar-for-a-developer.github.io/images/diamond_ore.webp">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="Diamond ore block representing the goal">
+    <meta property="og:url" content="https://a-dollar-for-a-developer.github.io/">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Dollar for a Developer">
+    <meta name="twitter:description" content="Help Jitendra fund a laptop to pursue coding.">
+    <meta name="twitter:image" content="https://a-dollar-for-a-developer.github.io/images/diamond_ore.webp">
+    <meta name="twitter:image:alt" content="Diamond ore block representing the goal">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Jitendra">
+    <meta name="keywords" content="developer, coding, laptop, fundraising, programming, student developer">
+    <meta name="theme-color" content="#6dd5ed">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="A Dollar for a Developer">
 </head>
 <body>
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; right: 0; background: #f44336; color: white; padding: 10px; text-align: center; z-index: 10000;">
+            JavaScript is disabled. Some features may not work properly. Please enable JavaScript for the best experience.
+        </div>
+    </noscript>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#home" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- ADDED: Sticky Navigation Menu -->
     <nav class="top-menu">
@@ -36,51 +81,61 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#quest">My Quest</a></li>
             <li><a href="#goal">The Goal</a></li>
-            <li><a href="#contact">Contact</a></li>
+			<li><a href="#contact">Contact</a></li>
+			<li><a href="#" id="share-button" aria-label="Share this story"><i class="fas fa-share-alt"></i> Share</a></li>
         </ul>
     </nav>
 
-    <div class="world-container">
+    <main class="world-container" role="main">
 
         <!-- LAYER 1: THE SKY (ID is now 'home' for the menu) -->
-        <section id="home" class="layer sky-layer">
-            <div class="header-box">
-                <h1>A Dollar for a Developer</h1>
+        <section id="home" class="layer sky-layer" aria-labelledby="home-heading">
+            <header class="header-box">
+                <h1 id="home-heading">A Dollar for a Developer</h1>
                 <p>Help me craft a better future. Scroll down to begin the adventure.</p>
-            </div>
-            <div class="scroll-down-indicator"></div>
+				<a href="#donation-button" id="support-quest-btn" class="submit-button" aria-label="Support my quest by scrolling to donation section">Support My Quest</a>
+            </header>
+            <div class="scroll-down-indicator" aria-hidden="true"></div>
             <!-- ADDED: Go to Bottom Button -->
-            <a href="#contact" class="scroll-button go-down" aria-label="Go to bottom">
-                <i class="fas fa-arrow-down"></i>
+            <a href="#contact" class="scroll-button go-down" aria-label="Go to contact section">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i>
             </a>
         </section>
 
         <!-- LAYER 2: THE GRASSLAND (ID is now 'quest' for the menu) -->
-        <section id="quest" class="layer grass-layer">
-            <div class="content-box dirt-border">
-                <h2>My Quest</h2>
-                <p>Hello! I'm Jitendra Raghav, a 20-year-old developer-in-training from India. My passion is to build amazing things with code, but my current equipment is like a wooden pickaxe trying to break obsidian. It's slow and holds me back from learning advanced skills.</p>
-            </div>
+        <section id="quest" class="layer grass-layer" aria-labelledby="quest-heading">
+            <article class="content-box dirt-border">
+                <h2 id="quest-heading">My Quest</h2>
+                <p>Hello! I'm Jitendra, a 20-year-old developer-in-training. My passion is to build amazing things with code, but my current equipment is like a wooden pickaxe trying to break obsidian. It's slow and holds me back from learning advanced skills.</p>
+            </article>
         </section>
 
         <!-- LAYER 3: THE UNDERGROUND (ID is now 'goal' for the menu) -->
-        <section id="goal" class="layer stone-layer">
-            <div class="content-box stone-border">
-                <h2>Mining for a Goal: $342</h2>
+        <section id="goal" class="layer stone-layer" aria-labelledby="goal-heading">
+            <article class="content-box stone-border">
+                <h2 id="goal-heading">Mining for a Goal: $548.39</h2>
                 <p>My mission is to mine enough resources to fund a powerful, second-hand laptop. This new tool will be my ultimate crafting table, allowing me to build complex projects and eventually help others with my skills.</p>
                 
                 <h3>Progress Mined:</h3>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                <!-- 
+                    TO UPDATE PROGRESS BAR:
+                    1. Calculate percentage: (Amount Raised / $548.39) × 100
+                    2. Update BOTH values below:
+                       - aria-valuenow attribute (e.g., aria-valuenow="25" for 25%)
+                       - aria-label percentage text (e.g., "Fundraising progress: 25 percent")
+                       - style width value (e.g., style="width: 25%;" for 25%)
+                -->
+                <div class="progress-bar-container" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" aria-label="Fundraising progress: 5 percent">
+                    <div class="progress-bar-fill" style="width: 5%;" aria-hidden="true"></div>
                 </div>
-            </div>
+            </article>
 
-            <div class="content-box stone-border call-to-action">
+            <article class="content-box stone-border call-to-action">
                 <h2>Find the Diamond!</h2>
                 <p>Your contribution is the rare diamond I'm searching for. Click the block below to support the quest.</p>
                 
-                <div class="donation-block-wrapper" id="donation-button">
-                    <div class="donation-block">
+			<div class="donation-block-wrapper" id="donation-button" role="button" tabindex="0" aria-label="Click to support on Buy Me a Coffee - Opens in new window">
+                    <div class="donation-block" aria-hidden="true">
                         <div class="donation-block__face"></div>
                         <div class="donation-block__face"></div>
                         <div class="donation-block__face"></div>
@@ -88,74 +143,293 @@
                         <div class="donation-block__face"></div>
                         <div class="donation-block__face"></div>
                     </div>
-                    <div class="click-text">Click to Support</div>
+                    <div class="click-text" aria-hidden="true">Click to Support</div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <!-- LAYER 4: BEDROCK (ID is now 'contact' for the menu) -->
-        <section id="contact" class="layer bedrock-layer">
+        <section id="contact" class="layer bedrock-layer" aria-labelledby="contact-heading">
             <footer>
-                <h2>Get in Touch</h2>
+                <h2 id="contact-heading">Get in Touch</h2>
                 
                 <!-- ADDED: Formspree Contact Form -->
-                <form id="contact-form" action="https://formspree.io/f/mpwjzook" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/mpwjzook" method="POST" novalidate>
+                    <div id="form-message" class="form-message" role="alert" aria-live="polite" aria-atomic="true"></div>
                     <div class="form-group">
                         <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" autocomplete="email">
+                        <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <textarea id="message" name="message" rows="4" required aria-required="true" aria-describedby="message-error" autocomplete="off"></textarea>
+                        <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
-                    <button type="submit" class="submit-button">Send Message</button>
+                    <button type="submit" class="submit-button" id="submit-btn" aria-label="Send contact message">Send Message</button>
                 </form>
 
-                <p class="alt-contact">Or contact me directly at: <a href="mailto:adollarforadeveloper@gmail.com">adollarforadeveloper@gmail.com</a></p>
+                <p class="alt-contact">Or contact me directly at: <a href="mailto:adollarforadeveloper@gmail.com" aria-label="Send email to adollarforadeveloper@gmail.com">adollarforadeveloper@gmail.com</a></p>
 
-                <div class="social-links">
-                    <a href="https://www.reddit.com/user/Hot-Watercress-5693/" target="_blank" aria-label="Reddit Profile">
-                        <i class="fab fa-reddit-alien"></i>
+                <nav class="social-links" aria-label="Social media links">
+                    <a href="https://www.reddit.com/user/Hot-Watercress-5693/" target="_blank" rel="noopener noreferrer" aria-label="Visit my Reddit profile (opens in new window)">
+                        <i class="fab fa-reddit-alien" aria-hidden="true"></i>
+                        <span class="sr-only">Reddit</span>
                     </a>
-                    <a href="https://youtube.com/@adollarforadeveloper" target="_blank" aria-label="YouTube Channel">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://youtube.com/@adollarforadeveloper" target="_blank" rel="noopener noreferrer" aria-label="Visit my YouTube channel (opens in new window)">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <span class="sr-only">YouTube</span>
                     </a>
-                </div>
+                    <a href="https://buymeacoffee.com/a.dollar.for.a.developer" target="_blank" rel="noopener noreferrer" aria-label="Support me on Buy Me a Coffee (opens in new window)">
+                        <i class="fas fa-coffee" aria-hidden="true"></i>
+                        <span class="sr-only">Buy Me a Coffee</span>
+                    </a>
+                </nav>
 
-                <p>Jitendra Raghav - 2025</p>
+                <p>&copy; Jitendra - 2025</p>
             </footer>
         </section>
 
-    </div> <!-- This is the closing tag for world-container -->
+    </main> <!-- This is the closing tag for world-container -->
 
     <!-- ADDED: Scroll Button outside the world container -->
     <a href="#contact" class="scroll-button go-down" id="go-down-button" aria-label="Go to bottom">
         <i class="fas fa-arrow-down"></i>
     </a>
 
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jitendra",
+        "description": "Aspiring developer seeking support to fund a laptop for coding education",
+        "url": "https://a-dollar-for-a-developer.github.io/",
+        "sameAs": [
+            "https://www.reddit.com/user/Hot-Watercress-5693/",
+            "https://youtube.com/@adollarforadeveloper",
+            "https://buymeacoffee.com/a.dollar.for.a.developer"
+        ],
+        "email": "adollarforadeveloper@gmail.com",
+        "jobTitle": "Aspiring Developer",
+        "knowsAbout": ["Programming", "Web Development", "Coding"]
+    }
+    </script>
+
     <!-- UPDATED JAVASCRIPT -->
     <script>
         // --- Donation Button Logic ---
         const donationButton = document.getElementById('donation-button');
-        donationButton.addEventListener('click', () => {
-            window.open('PASTE_YOUR_INSTAMOJO_LINK_HERE', '_blank');
-        });
+        if (donationButton) {
+            const handleDonationClick = () => {
+                // Track donation button click
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'donation_button_click', {
+                        'event_category': 'engagement',
+                        'event_label': 'Donation Button'
+                    });
+                }
+                window.open('https://buymeacoffee.com/a.dollar.for.a.developer', '_blank', 'noopener,noreferrer');
+            };
+            donationButton.addEventListener('click', handleDonationClick);
+            // Allow keyboard activation (Enter/Space)
+            donationButton.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleDonationClick();
+                }
+            });
+        }
+
+		// --- Support My Quest button smooth scroll ---
+		const supportQuestBtn = document.getElementById('support-quest-btn');
+		if (supportQuestBtn) {
+			supportQuestBtn.addEventListener('click', (e) => {
+				e.preventDefault();
+				document.getElementById('donation-button').scrollIntoView({ behavior: 'smooth', block: 'center' });
+			});
+		}
 
         // --- Active Menu Link & Smart Scroll Button Logic ---
         const sections = document.querySelectorAll('.layer');
         const menuLinks = document.querySelectorAll('.top-menu a');
         const goDownButton = document.getElementById('go-down-button');
 
+		// --- Share Button Logic ---
+		const shareButton = document.getElementById('share-button');
+		if (shareButton) {
+			shareButton.addEventListener('click', async (e) => {
+				e.preventDefault();
+				const shareData = {
+					title: document.title,
+					text: 'Help Jitendra fund a laptop and share this story.',
+					url: window.location.href
+				};
+				// Track share event
+				if (typeof gtag !== 'undefined') {
+					gtag('event', 'share', {
+						'method': navigator.share ? 'native_share' : 'clipboard',
+						'content_type': 'page'
+					});
+				}
+				if (navigator.share) {
+					try { await navigator.share(shareData); } catch (err) { /* user cancelled */ }
+				} else if (navigator.clipboard) {
+					try {
+						await navigator.clipboard.writeText(shareData.url);
+						shareButton.textContent = 'Link Copied!';
+						setTimeout(() => { shareButton.innerHTML = '<i class="fas fa-share-alt"></i> Share'; }, 1500);
+					} catch (_) {
+						window.prompt('Copy this link:', shareData.url);
+					}
+				} else {
+					window.prompt('Copy this link:', shareData.url);
+				}
+			});
+		}
+
         // --- Home button scroll to top functionality ---
         const homeLink = document.querySelector('.top-menu a[href="#home"]');
-        homeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (homeLink) {
+            homeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.hash = '#home';
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
 
+        // --- Form Validation and Submission Handler ---
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const emailError = document.getElementById('email-error');
+        const messageError = document.getElementById('message-error');
+        
+        // Real-time validation
+        const validateEmail = (email) => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        };
+        
+        const validateForm = () => {
+            let isValid = true;
+            
+            // Validate email
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Email is required.';
+                isValid = false;
+            } else if (!validateEmail(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                isValid = false;
+            } else {
+                emailError.textContent = '';
+            }
+            
+            // Validate message
+            if (!messageInput.value.trim()) {
+                messageError.textContent = 'Message is required.';
+                isValid = false;
+            } else if (messageInput.value.trim().length < 10) {
+                messageError.textContent = 'Message must be at least 10 characters.';
+                isValid = false;
+            } else {
+                messageError.textContent = '';
+            }
+            
+            return isValid;
+        };
+        
+        // Add real-time validation
+        emailInput.addEventListener('blur', validateForm);
+        messageInput.addEventListener('blur', validateForm);
+        emailInput.addEventListener('input', () => {
+            if (emailError.textContent) validateForm();
+        });
+        messageInput.addEventListener('input', () => {
+            if (messageError.textContent) validateForm();
+        });
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Clear previous errors
+                emailError.textContent = '';
+                messageError.textContent = '';
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
+                
+                // Validate before submitting
+                if (!validateForm()) {
+                    formMessage.textContent = 'Please fix the errors above.';
+                    formMessage.className = 'form-message error';
+                    return;
+                }
+                
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                try {
+                    const formData = new FormData(contactForm);
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+                        formMessage.className = 'form-message success';
+                        contactForm.reset();
+                        emailError.textContent = '';
+                        messageError.textContent = '';
+                        
+                        // Track successful form submission
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'form_submission', {
+                                'event_category': 'engagement',
+                                'event_label': 'Contact Form'
+                            });
+                        }
+                    } else {
+                        const data = await response.json();
+                        if (data.errors) {
+                            formMessage.textContent = 'Error: ' + Object.values(data.errors).map(e => e.join(', ')).join(', ');
+                        } else {
+                            formMessage.textContent = '✗ Something went wrong. Please try again or email me directly.';
+                        }
+                        formMessage.className = 'form-message error';
+                    }
+                } catch (error) {
+                    formMessage.textContent = '✗ Network error. Please check your connection or email me directly.';
+                    formMessage.className = 'form-message error';
+                } finally {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Track section views for analytics
+        const viewedSections = new Set();
+        const trackSectionView = (sectionId) => {
+            if (!viewedSections.has(sectionId) && typeof gtag !== 'undefined') {
+                viewedSections.add(sectionId);
+                gtag('event', 'section_view', {
+                    'event_category': 'engagement',
+                    'event_label': sectionId
+                });
+            }
+        };
+        
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
@@ -171,8 +445,15 @@
                 // Highlight the section that's currently visible in the viewport
                 if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                     currentSectionId = section.getAttribute('id');
+                    // Track section view
+                    trackSectionView(currentSectionId);
                 }
             });
+
+            // --- Update URL hash to match current section (without triggering scroll) ---
+            if (currentSectionId && window.location.hash !== '#' + currentSectionId) {
+                history.replaceState(null, null, '#' + currentSectionId);
+            }
 
             menuLinks.forEach(link => {
                 link.classList.remove('active');
@@ -188,6 +469,38 @@
                 goDownButton.classList.remove('visible');
             }
         });
+
+        // --- Set initial hash on page load based on scroll position ---
+        const updateHashOnLoad = () => {
+            const scrollPosition = window.scrollY;
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 55;
+                const sectionHeight = section.offsetHeight;
+                const sectionBottom = sectionTop + sectionHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            
+            if (currentSectionId && window.location.hash !== '#' + currentSectionId) {
+                history.replaceState(null, null, '#' + currentSectionId);
+            }
+        };
+
+        // Run on page load and after a short delay to ensure sections are rendered
+        window.addEventListener('load', () => {
+            updateHashOnLoad();
+            // Track initial page view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'event_category': 'engagement',
+                    'event_label': 'Home'
+                });
+            }
+        });
+        setTimeout(updateHashOnLoad, 100);
     </script>
 
 </body>
