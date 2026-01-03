@@ -46,6 +46,12 @@
     padding: 15px 20px;
     font-size: 0.9rem;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.top-menu li a i {
+    font-size: 0.9rem;
 }
 .top-menu li a:hover {
     color: #6dd5ed; /* Diamond blue color */
@@ -276,14 +282,43 @@ footer { color: #aaa; }
 /* --- RESPONSIVE DESIGN FOR PHONES --- */
 @media (max-width: 768px) {
     body { padding-top: 40px; }
-    .top-menu { height: 40px; }
-    .top-menu li a { padding: 10px 8px; font-size: 0.7rem; }
+    .top-menu { 
+        height: 40px; 
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    .top-menu::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+    .top-menu ul {
+        flex-wrap: nowrap;
+        min-width: max-content;
+        padding: 0 10px;
+    }
+    .top-menu li a { 
+        padding: 10px 6px; 
+        font-size: 0.65rem; 
+        white-space: nowrap;
+        gap: 3px;
+    }
+    .top-menu li a i {
+        font-size: 0.65rem;
+    }
     .scroll-button { width: 40px; height: 40px; right: 15px; bottom: 15px; }
     
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
     p { font-size: 1rem; }
     .content-box { padding: 20px; border-width: 8px; }
+    .header-box { padding: 20px; }
+    .submit-button { 
+        font-size: 0.85rem; 
+        padding: 10px 16px; 
+        margin-top: 15px;
+    }
     .bedrock-layer { background-size: 56px; }
     .bedrock-layer::before { background: rgba(0, 0, 0, 0.78); }
     /* Prevent cube scale on hover emulation on mobile to avoid overlap */
@@ -305,9 +340,36 @@ footer { color: #aaa; }
 
 /* Extra small phones */
 @media (max-width: 480px) {
+    body { padding-top: 40px; }
+    .top-menu { 
+        height: 40px; 
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .top-menu ul {
+        flex-wrap: nowrap;
+        min-width: max-content;
+        padding: 0 8px;
+    }
+    .top-menu li a { 
+        padding: 10px 4px; 
+        font-size: 0.6rem; 
+        white-space: nowrap;
+        gap: 2px;
+    }
+    .top-menu li a i {
+        font-size: 0.6rem;
+    }
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.4rem; }
     p { font-size: 0.95rem; }
+    .header-box { padding: 15px; }
+    .submit-button { 
+        font-size: 0.75rem; 
+        padding: 8px 12px; 
+        margin-top: 12px;
+    }
     .content-box { padding: 16px; }
     .donation-block-wrapper { padding-bottom: 32px; display: flex; flex-direction: column; align-items: center; }
     /* Place text above the cube to avoid any overlap */
@@ -327,6 +389,17 @@ footer { color: #aaa; }
 
 /* Ultra-small phones */
 @media (max-width: 400px) {
+    .top-menu li a { 
+        padding: 10px 3px; 
+        font-size: 0.55rem; 
+        gap: 2px;
+    }
+    .top-menu li a i {
+        font-size: 0.55rem;
+    }
+    .top-menu ul {
+        padding: 0 5px;
+    }
     .donation-block { width: 90px; height: 90px; margin-bottom: 20px; }
     .donation-block__face { width: 90px; height: 90px; }
     /* Adjust transforms to match 90px cube (translateZ = 45px) */
@@ -336,6 +409,21 @@ footer { color: #aaa; }
     .donation-block__face:nth-child(4) { transform: rotateY(-90deg) translateZ(45px); }
     .donation-block__face:nth-child(5) { transform: rotateX( 90deg) translateZ(45px); }
     .donation-block__face:nth-child(6) { transform: rotateX(-90deg) translateZ(45px); }
+}
+
+/* Very small Android devices */
+@media (max-width: 360px) {
+    .top-menu li a { 
+        padding: 10px 2px; 
+        font-size: 0.5rem; 
+        gap: 2px;
+    }
+    .top-menu li a i {
+        font-size: 0.5rem;
+    }
+    .top-menu ul {
+        padding: 0 3px;
+    }
 }
 
 /* --- FOOTER & SOCIAL LINKS --- */

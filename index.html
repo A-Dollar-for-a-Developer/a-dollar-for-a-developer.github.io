@@ -317,6 +317,9 @@
         };
         
         const validateForm = () => {
+            if (!emailInput || !messageInput || !emailError || !messageError) {
+                return false;
+            }
             let isValid = true;
             
             // Validate email
@@ -345,16 +348,20 @@
         };
         
         // Add real-time validation
-        emailInput.addEventListener('blur', validateForm);
-        messageInput.addEventListener('blur', validateForm);
-        emailInput.addEventListener('input', () => {
-            if (emailError.textContent) validateForm();
-        });
-        messageInput.addEventListener('input', () => {
-            if (messageError.textContent) validateForm();
-        });
+        if (emailInput && emailError) {
+            emailInput.addEventListener('blur', validateForm);
+            emailInput.addEventListener('input', () => {
+                if (emailError.textContent) validateForm();
+            });
+        }
+        if (messageInput && messageError) {
+            messageInput.addEventListener('blur', validateForm);
+            messageInput.addEventListener('input', () => {
+                if (messageError.textContent) validateForm();
+            });
+        }
         
-        if (contactForm) {
+        if (contactForm && emailInput && messageInput && emailError && messageError && submitBtn && formMessage) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
@@ -463,10 +470,12 @@
             });
 
             // --- Logic for the "Go Down" button visibility ---
-            if (scrollPosition + windowHeight < fullHeight - 100) { // 100px buffer from bottom
-                goDownButton.classList.add('visible');
-            } else {
-                goDownButton.classList.remove('visible');
+            if (goDownButton) {
+                if (scrollPosition + windowHeight < fullHeight - 100) { // 100px buffer from bottom
+                    goDownButton.classList.add('visible');
+                } else {
+                    goDownButton.classList.remove('visible');
+                }
             }
         });
 
